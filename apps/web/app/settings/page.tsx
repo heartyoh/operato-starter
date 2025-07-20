@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Button, Input, Modal } from '@ui/index';
 
 export default function SettingsPage() {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,7 +31,9 @@ export default function SettingsPage() {
           <input
             type="checkbox"
             checked={darkMode}
-            onChange={(e) => setDarkMode(e.target.checked)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDarkMode(e.target.checked)
+            }
             className="mr-2"
           />
           <label>Enable Dark Mode</label>
@@ -39,7 +42,9 @@ export default function SettingsPage() {
           <input
             type="checkbox"
             checked={notifications}
-            onChange={(e) => setNotifications(e.target.checked)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setNotifications(e.target.checked)
+            }
             className="mr-2"
           />
           <label>Enable Notifications</label>

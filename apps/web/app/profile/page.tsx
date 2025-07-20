@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Button, Input, Modal } from '@ui/index';
 
 type Profile = {
   name: string;

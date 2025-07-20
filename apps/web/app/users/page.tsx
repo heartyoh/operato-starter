@@ -7,6 +7,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { Button, Input, Modal } from '@ui/index';
 
 type User = {
   id: number;

@@ -8,7 +8,7 @@ export async function apiFetch<T = any>(
 ): Promise<T> {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
-    ...options.headers,
+    ...(options.headers as Record<string, string>),
   };
 
   // 🔔 추가: Authorization header 자동 추가 (optional)

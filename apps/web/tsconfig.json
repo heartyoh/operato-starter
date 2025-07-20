@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "@ui/*": ["../../packages/ui/*"],
       "@hooks/*": ["../../packages/hooks/*"],
       "@utils/*": ["../../packages/utils/*"]
@@ -13,7 +14,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "strictNullChecks": true
   },
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

@@ -1,3 +1,5 @@
+import { Button, Input, Modal } from '@ui/index';
+
 export default function DashboardPage() {
   return (
     <main className="p-8">
