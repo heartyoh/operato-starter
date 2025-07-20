@@ -1,7 +1,7 @@
-
-# My Starter Template
+# Operato Starter
 
 This is a monorepo template for modern frontend development:
+
 - Next.js (App Router)
 - Tailwind CSS
 - shadcn/ui
@@ -14,21 +14,25 @@ This is a monorepo template for modern frontend development:
 ## Getting Started
 
 1️⃣ Install dependencies:
+
 ```
 pnpm install
 ```
 
 2️⃣ Run web:
+
 ```
 pnpm dev --filter web
 ```
 
 3️⃣ Run mobile:
+
 ```
 pnpm dev --filter mobile
 ```
 
 ## Project structure
+
 - `apps/web`: Next.js app
 - `apps/mobile`: Expo + Nativewind
 - `packages/ui`: Shared UI components
