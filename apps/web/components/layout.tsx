@@ -1,10 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ThemeToggle from '@/components/theme-toggle';
+import { useTheme } from '@/hooks/use-theme';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -23,27 +26,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 function Header({ onMenuClick }: { onMenuClick: () => void }) {
   return (
-    <header className="h-14 bg-gray-800 text-white flex items-center justify-between px-4">
+    <header className="h-14 bg-gray-800 dark:bg-gray-900 text-white flex items-center justify-between px-4">
       <h1 className="text-lg font-bold">Operato Starter</h1>
-      {/* Mobile: Hamburger icon */}
-      <button
-        className="md:hidden text-white hover:text-gray-300 p-2"
-        onClick={onMenuClick}
-      >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+      <div className="flex items-center space-x-2">
+        <ThemeToggle />
+        {/* Mobile: Hamburger icon */}
+        <button
+          className="md:hidden text-white hover:text-gray-300 p-2"
+          onClick={onMenuClick}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
     </header>
   );
 }
@@ -68,7 +74,7 @@ function Sidebar({
       {/* Sidebar */}
       <aside
         className={`
-        fixed md:static inset-y-0 left-0 z-50 w-56 bg-gray-100 p-4 space-y-2
+        fixed md:static inset-y-0 left-0 z-50 w-56 bg-gray-100 dark:bg-gray-800 p-4 space-y-2
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}
@@ -117,7 +123,7 @@ function Sidebar({
 
 function Footer() {
   return (
-    <footer className="h-12 bg-gray-200 flex items-center justify-center text-sm text-gray-500">
+    <footer className="h-12 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
       © 2025 Operato Starter
     </footer>
   );

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { apiClient } from '@/lib/api-client';
 import { Field } from '@/types/form';
 import { Button, Input } from '@ui';
+import Skeleton from '@/components/skeleton';
 import Link from 'next/link';
 import {
   useReactTable,
@@ -118,7 +119,9 @@ export default function EntityListPage({
   return (
     <main className="p-8 space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold capitalize">{entity} List</h1>
+        <h1 className="text-2xl font-semibold capitalize text-gray-900 dark:text-gray-100">
+          {entity} List
+        </h1>
         <Link href={`/entities/${entity}/create`}>
           <Button variant="default">+ New {entity}</Button>
         </Link>
@@ -129,30 +132,37 @@ export default function EntityListPage({
           placeholder="Search..."
           value={globalFilter}
           onChange={(e) => setGlobalFilter(e.target.value)}
-          className="w-64"
+          className="w-64 bg-white dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
 
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <div className="space-y-2">
+          <Skeleton className="h-6 w-1/4" />
+          {[...Array(4)].map((_, i) => (
+            <Skeleton key={i} className="h-10 w-full" />
+          ))}
+        </div>
+      )}
 
       {!loading && schema && (
         <>
           {table.getRowModel().rows.length === 0 ? (
-            <div className="p-4 text-center text-gray-500 border rounded-md">
+            <div className="p-4 text-center text-gray-500 dark:text-gray-400 border rounded-md border-gray-300 dark:border-gray-600">
               No records found for this entity.
             </div>
           ) : (
             <>
-              <div className="overflow-x-auto border rounded-md">
-                <table className="min-w-full divide-y divide-gray-200 text-sm">
-                  <thead className="bg-gray-50">
+              <div className="overflow-x-auto border rounded-md border-gray-300 dark:border-gray-600">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                  <thead className="bg-gray-50 dark:bg-gray-800">
                     {table.getHeaderGroups().map((headerGroup) => (
                       <tr key={headerGroup.id}>
                         {headerGroup.headers.map((header) => (
                           <th
                             key={header.id}
                             onClick={header.column.getToggleSortingHandler()}
-                            className="cursor-pointer px-4 py-2 text-left font-medium text-gray-500 uppercase tracking-wider"
+                            className="cursor-pointer px-4 py-2 text-left font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
                           >
                             {flexRender(
                               header.column.columnDef.header,
@@ -167,11 +177,17 @@ export default function EntityListPage({
                       </tr>
                     ))}
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
                     {table.getRowModel().rows.map((row) => (
-                      <tr key={row.id} className="hover:bg-gray-50">
+                      <tr
+                        key={row.id}
+                        className="hover:bg-gray-50 dark:hover:bg-gray-800"
+                      >
                         {row.getVisibleCells().map((cell) => (
-                          <td key={cell.id} className="px-4 py-2">
+                          <td
+                            key={cell.id}
+                            className="px-4 py-2 text-gray-900 dark:text-gray-100"
+                          >
                             {flexRender(
                               cell.column.columnDef.cell,
                               cell.getContext()
@@ -186,11 +202,11 @@ export default function EntityListPage({
 
               <div className="flex justify-between items-center mt-4">
                 <div>
-                  <label className="mr-2 text-sm text-gray-600">
+                  <label className="mr-2 text-sm text-gray-600 dark:text-gray-400">
                     Rows per page:
                   </label>
                   <select
-                    className="border rounded px-2 py-1 text-sm"
+                    className="border rounded px-2 py-1 text-sm bg-white dark:bg-gray-800 dark:text-gray-100"
                     value={table.getState().pagination.pageSize}
                     onChange={(e) => table.setPageSize(Number(e.target.value))}
                   >
