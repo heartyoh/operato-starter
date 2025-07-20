@@ -1,0 +1,12 @@
+
+{
+  "name": "my-starter",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "devDependencies": {
+    "turbo": "^1.12.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev"
+  }
+}
