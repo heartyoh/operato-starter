@@ -1,15 +1,8 @@
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+});
 
-module.exports = {
+module.exports = withPWA({
   reactStrictMode: true,
-  experimental: {
-    appDir: true
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:8080/:path*' // Example Spring backend API proxy
-      }
-    ]
-  }
-}
+});
