@@ -218,21 +218,27 @@ export default function EntityListPage({
                   </select>
                 </div>
 
-                <div className="space-x-2">
-                  <Button
-                    size="sm"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
-                  >
-                    Previous
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
-                  >
-                    Next
-                  </Button>
+                <div className="flex items-center space-x-4">
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    Page {table.getState().pagination.pageIndex + 1} of{' '}
+                    {table.getPageCount()}
+                  </div>
+                  <div className="space-x-2">
+                    <Button
+                      size="sm"
+                      onClick={() => table.previousPage()}
+                      disabled={!table.getCanPreviousPage()}
+                    >
+                      Previous
+                    </Button>
+                    <Button
+                      size="sm"
+                      onClick={() => table.nextPage()}
+                      disabled={!table.getCanNextPage()}
+                    >
+                      Next
+                    </Button>
+                  </div>
                 </div>
               </div>
             </>
