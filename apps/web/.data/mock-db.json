@@ -33,6 +33,44 @@
         "type": "text",
         "required": false
       }
+    ],
+    "Xai": [
+      {
+        "name": "A",
+        "label": "A",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "B",
+        "label": "B",
+        "type": "text",
+        "required": false
+      }
+    ],
+    "Xbbb": [
+      {
+        "name": "id",
+        "label": "ID",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "text"
+      },
+      {
+        "name": "createdAt",
+        "label": "Created At",
+        "type": "datetime"
+      }
     ]
   },
   "records": {
@@ -46,6 +84,11 @@
         "id": "2",
         "A": "2",
         "B": "2"
+      },
+      "3": {
+        "id": "3",
+        "A": "aaaa",
+        "B": "aaaa"
       }
     }
   }

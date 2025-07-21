@@ -115,6 +115,13 @@ function Sidebar({
           >
             Settings
           </Link>
+          <Link
+            href="/entities/list"
+            className="block hover:text-blue-500"
+            onClick={onClose}
+          >
+            Entities
+          </Link>
         </nav>
       </aside>
     </>

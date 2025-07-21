@@ -6,7 +6,11 @@ export async function GET(
   { params }: { params: Promise<{ entity: string }> }
 ) {
   const { entity } = await params;
+  console.log('Records API called for entity:', entity);
+
   const records = getRecords(entity);
+  console.log('Found records:', records);
+
   return NextResponse.json(records);
 }
 
